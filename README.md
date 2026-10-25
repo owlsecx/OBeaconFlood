@@ -18,13 +18,17 @@
 
 ## 📌 Overview
 
-OBeaconFlood is a security and privacy tool from the OwlSec suite.
+OBeaconFlood analyzes 802.11 packet captures to detect beacon-flood and rogue-SSID attacks. It parses radiotap and 802.11 frames to measure SSID fan-out per BSSID, beacon rates and randomised MACs. It can also write a synthetic beacon PCAP for authorised lab replay, but it never transmits a frame.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- Beacon-flood analyzer for pcap / pcapng captures with a full radiotap and 802.11 parser
+- Detects per-BSSID SSID fan-out, abnormal beacon rates and random MAC addresses
+- Offline synthetic beacon-set PCAP generator from an SSID list (no transmission)
+- Findings graded A+ to F with MITRE ATT&CK mapping
+- Reports in TXT / JSON / Markdown / CSV / SARIF; exits with code 3 on CRITICAL/HIGH findings
 
 ---
 
@@ -38,8 +42,13 @@ OBeaconFlood is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OBeaconFlood
+./OBeaconFlood                               # interactive menu
+./OBeaconFlood --analyze capture.pcapng
+./OBeaconFlood --generate --ssids ssids.txt --out lab.pcap
+./OBeaconFlood --demo
 ```
+
+Run `./OBeaconFlood --help` for the full list of options.
 
 ---
 
